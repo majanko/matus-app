@@ -17,7 +17,7 @@ int main() {
     std::cout << returnHelloWorldString() << std::endl;
 
     /* Register DLT App and Ctx and enable printing of DLT messages to local console */
-    DLT_REGISTER_APP("APP","AM demo Matus application");
+    DLT_REGISTER_APP("MAT","AM demo Matus application");
     DLT_REGISTER_CONTEXT(dlt_context,"CTX","AM demo matus application context");
     DLT_ENABLE_LOCAL_PRINT();
 
