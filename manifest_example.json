@@ -1,0 +1,28 @@
+{
+  "app_name": "matus-app",
+  "app_version": "0.2",
+  "app_configuration" : {
+     "type" : "0",
+     "activation_state" : "1",
+     "launch_trigger" : "START",
+     "cgroup_resources": {
+          "memory": {
+            "memory.limit_in_bytes":"4194304"
+          },
+          "cpu" : {
+            "cpu-shares": "10",
+            "cpu.cfs_period_us":"100000"
+          }
+        },
+     "granted_interfaces": [
+       "cvp.wlan.client",
+       "cvp.telephony.dataConnection"
+     ],
+     "priority" : "2",
+     "period" : "7",
+     "event_mask" : "3",
+     "exec_args" : "-v"
+  },
+  "data-connections": "none",
+  "data-volumes": []
+}

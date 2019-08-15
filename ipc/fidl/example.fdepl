@@ -1,0 +1,29 @@
+import "platform:/plugin/org.genivi.commonapi.someip/deployment/CommonAPI-SOMEIP_deployment_spec.fdepl"
+import "example.fidl"
+
+// _____________________ TCU_SW_FRAMEWORK _________________________
+// This section is required by automatic SomeIP configuration
+// and code generation. Do not delete any record in this section.
+//
+// @TCU_SW_FRAMEWORK.SomeIpServiceImplName = "matus__manager"
+//
+// _____________________ TCU_SW_FRAMEWORK _________________________
+define org.genivi.commonapi.someip.deployment for interface rsa.aivc.OffboardConnectionRequestManager {
+    SomeIpServiceID = 3500
+
+    method setFilter {
+        SomeIpMethodID = 1
+    }
+
+    broadcast offboardConnectionRequestNotification {
+        SomeIpEventID = 35000
+        SomeIpEventGroups = { 100 }
+    }
+}
+
+define org.genivi.commonapi.someip.deployment for provider MyService {
+    instance rsa.aivc.OffboardConnectionRequestManager {
+        InstanceId = "ocrmsvc"
+        SomeIpInstanceID = 1
+    }
+}

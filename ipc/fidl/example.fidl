@@ -1,0 +1,101 @@
+/*
+ @file    example.fidl
+ @author  Tomáš Babiak
+ @date    2018-11-01
+ @brief   Interfaces provided by the Offboard Connection Request Manager
+
+ Copyright (C) Valeo peiker
+ All rights reserved
+ @licence Valeo peiker
+
+ That file must be redistributed only within the Valeo peiker
+ Application development kit.
+
+    Date         Author      Version Description
+    --------     ---------   ------- --------------
+    2018-01-11   TBA         0.1   Initial version
+    2018-03-01   TBA         0.2   Package fixed to rsa.aivc
+*/
+
+
+package rsa.aivc
+
+<**
+    @description:author Tomáš Babiak
+    @description:date 2018-01-11
+    @description:copyright Valeo proprietary
+
+    @description:brief Interfaces provided by the Offboard Connection Request Manager
+    @description:version 0.2
+**>
+
+interface OffboardConnectionRequestManager {
+
+    /* @version 0.2 */
+    version {
+        major 0 minor 2
+    }
+
+	<**
+		@description:details Notification about an offboard connection request matching the target filter set using setFilter.
+		@description:param[out] reason Reason of the topic reconfiguration request. 
+	**>
+    broadcast offboardConnectionRequestNotification selective {
+        out {
+            OffboardConnectionRequestManagerTypes.TopicReconfigurationRequestReason reason
+        }
+    }
+    
+    <**
+        @description:details Sets the target filter to be used for notification about incomming offboard connection requests.
+        @description:param[in] filter Target filter
+    **>
+    method setFilter {
+        in {
+               OffboardConnectionRequestManagerTypes.TargetFilter filter
+        }
+    }
+    
+}
+
+typeCollection OffboardConnectionRequestManagerTypes {
+    version {
+        major 0
+        minor 1
+    }
+    
+    <**
+        @description:enum Topic recinfiguration reason for an MQTT connection request.
+    **>
+    enumeration TopicReconfigurationRequestReason {
+        UNDEFINED
+        NO_RESUBSCRIPTION
+        ALL_MQTT_TOPICS
+    }
+
+    <**
+        @description:enum Target device for a connection request.
+    **>
+    enumeration TargetDevice {
+        A_IVC
+        A_IVI
+    }
+    
+    <**
+        @description:enum Target protocol for a connection request.
+    **>
+    enumeration TargetProtocol {
+        MQTT
+        OMA_DM
+        CARWINGS
+    }
+
+    <**
+        @description:struct Target filter for a connection request.
+    **>
+    struct TargetFilter {
+        TargetProtocol  protocol
+        TargetDevice    device
+    }
+
+}
