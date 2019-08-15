@@ -29,8 +29,9 @@ include_directories("${PROJECT_SOURCE_DIR}/inc")
 find_package(PkgConfig REQUIRED)
 
 # Include Diagnostic Log&Trace user library
+FIND_PACKAGE(PkgConfig)
 pkg_check_modules(DLT REQUIRED automotive-dlt)
-message(STATUS "DLT version:      ${DLT_VERSION}")
+message(STATUS "DLT version: ${DLT_VERSION}")
 message(STATUS "DLT include dirs: ${DLT_INCLUDE_DIRS}")
 message(STATUS "DLT link dirs:    ${DLT_LIBDIR}")
 include_directories(${DLT_INCLUDE_DIRS})
