@@ -16,7 +16,9 @@
         },
      "granted_interfaces": [
        "cvp.wlan.client",
-       "cvp.telephony.dataConnection"
+       "cvp.telephony.ecall",
+       "cvp.positioning.positioning",
+       "com.space.shuttle.ocm.IPush"
      ],
      "priority" : "2",
      "period" : "7",
