@@ -22,11 +22,9 @@ int main() {
     DLT_ENABLE_LOCAL_PRINT();
 
     /* Print 'Hello World' to local console */
-    first_word.print(std::cout);
     std::cout << std::endl;
 
     /* Generate 'Hello World' DLT message */
-    first_word.print(first_strm);
     DLT_LOG(dlt_context,DLT_LOG_INFO,DLT_CSTRING(first_strm.str().c_str()),DLT_STRING("!"));
 
     /* Disable printing of DLT messages to local console and unregister DLT App and Ctx */
